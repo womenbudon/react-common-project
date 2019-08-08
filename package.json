@@ -124,11 +124,6 @@
       "jest-watch-typeahead/testname"
     ]
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
   "devDependencies": {
     "antd": "^3.5.3",
     "autoprefixer": "7.1.6",
