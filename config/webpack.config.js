@@ -1,4 +1,4 @@
-'use strict';
+
 
 const fs = require('fs');
 const isWsl = require('is-wsl');
@@ -25,6 +25,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const autoprefixer = require('autoprefixer');
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -42,6 +43,11 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
+
+const ROOT_PATH = path.resolve(__dirname);
+const SRC_PATH = path.join(ROOT_PATH, '../src');
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -272,6 +278,12 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        pages: path.resolve(SRC_PATH, 'pages'),
+        styles: path.resolve(SRC_PATH, 'styles'),
+        images: path.resolve(SRC_PATH, 'assets/images'),
+        modules: path.resolve(SRC_PATH, 'redux/modules'),
+        utils: path.resolve(SRC_PATH, 'utils'),
+        components: path.resolve(SRC_PATH, 'components'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -452,6 +464,22 @@ module.exports = function(webpackEnv) {
                 'sass-loader'
               ),
             },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'),
+             },
+             {
+               test: lessModuleRegex,
+               use: getStyleLoaders(
+                  {
+                    importLoaders: 2,
+                    modules: true,
+                      getLocalIdent: getCSSModuleLocalIdent,
+                  },
+                  'less-loader'
+                ),
+              },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.

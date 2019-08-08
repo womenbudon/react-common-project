@@ -1,12 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { LocaleProvider } from 'antd';
+/* eslint camelcase: 0 */
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import configureStore from './redux/store/configureStore';
+import Routers from './routers';
+import env from 'utils/env';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+/* $FlowFixMe */
+import './styles/index.less';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+window.ROUTE_PREFIX = env.ROUTE_PREFIX;
+const store = configureStore();
+if (process.env.NODE_ENV !== 'production') {
+  window.React = React;
+  sessionStorage.setItem('appId', 1962);
+}
+
+ReactDOM.render(
+  <Provider store={store}>
+    <div style={{ height: '100%' }}>
+      <LocaleProvider locale={zh_CN}>
+        <Routers />
+      </LocaleProvider>
+    </div>
+  </Provider>,
+  document.getElementById('root'),
+);

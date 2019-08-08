@@ -1,0 +1,72 @@
+/*
+*  antd表格高度自适应通用样式
+*/
+@headerHeight: 62px;
+.table-height-adapt() {
+  .ant-table-wrapper {
+    width: 100%;
+    height: 100%;
+
+    .ant-spin-nested-loading, .ant-spin-container, .ant-table {
+      height: 100%;
+    }
+
+    .ant-table {
+      overflow-y: auto;
+      .iconfont {
+        color: #3C9DFF;
+      }
+    }
+
+    .ant-table-content {
+      height: calc(~'100% - 48px');
+      .ant-table-scroll {
+        overflow: hidden;
+        height: 100%;
+      }
+    }
+
+    .ant-table-header {
+      padding-bottom: 20px !important;
+      margin-bottom: -20px !important;
+    }
+
+    .ant-table-fixed-header .ant-table-scroll .ant-table-header {
+      overflow: hidden;
+    }
+
+    .ant-table-body {
+      overflow-y: auto !important;
+      background: #fff;
+      height: calc(~'100% - @{headerHeight}');
+    }
+
+    .ant-table-thead th:first-child, .ant-table-row > td:first-child {
+      padding-left: 30px;
+    }
+
+    .ant-table-thead th {
+      border-bottom: 1px solid #3bc1c4;
+    }
+
+    .ant-table-pagination {
+      position: absolute;
+      right: 0;
+      bottom: -16px;
+      .ant-pagination-total-text {
+        color: #666;
+      }
+    }
+    
+    .ant-pagination-options-size-changer.ant-select {
+      margin-right: 0;
+    }
+
+    .ant-table-placeholder {
+      position: absolute;
+      top: @headerHeight;
+      width: 100%;
+      height: 54px;
+    }
+  }
+}

@@ -46,6 +46,7 @@
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
+    "redux": "^4.0.4",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
@@ -127,5 +128,18 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "antd": "^3.5.3",
+    "autoprefixer": "7.1.6",
+    "babel-plugin-import": "^1.1.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "less": "^3.9.0",
+    "less-loader": "4.0.5",
+    "react-redux": "^7.1.0",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^5.0.1",
+    "redux-actions": "^2.0.3",
+    "redux-thunk": "^1.0.3"
   }
 }
