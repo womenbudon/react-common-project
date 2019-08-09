@@ -16,6 +16,7 @@ const store = configureStore();
 if (process.env.NODE_ENV !== 'production') {
   window.React = React;
   sessionStorage.setItem('appId', 1962);
+  sessionStorage.setItem('loginStatus','login');
 }
 
 ReactDOM.render(

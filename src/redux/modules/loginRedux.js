@@ -1,11 +1,11 @@
 /**
  * @flow
  */
-import { ansyHandleFactory, handleActions } from 'utils/actionFactory'
-import { createAsyncAction } from 'utils/request'
-import { url } from './url'
+import { ansyHandleFactory, handleActions } from 'utils/actionFactory';
+import { createAsyncAction } from 'utils/request';
+import { url } from './url';
 
-const loginData = ansyHandleFactory('login')
+const loginData = ansyHandleFactory('login');
 
 const loginRedux = handleActions(
   loginData('POST', {
