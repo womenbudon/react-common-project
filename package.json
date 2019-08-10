@@ -125,9 +125,11 @@
     ]
   },
   "devDependencies": {
+    "alpha-utils": "^1.1.0",
     "antd": "^3.5.3",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "express": "^4.17.1",
     "less": "^3.9.0",
     "less-loader": "4.0.5",
     "mocker-api": "^1.7.8",

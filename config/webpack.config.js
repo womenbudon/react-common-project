@@ -131,26 +131,6 @@ module.exports = function(webpackEnv) {
         ? 'source-map'
         : false
       : isEnvDevelopment && 'cheap-module-source-map',
-      // devServer: {
-      //     before(app){
-      //       apiMocker(app, path.resolve('../.mock.config.js'), {
-      //         proxy: {
-      //           '/common/*': 'http://localhost:3001/'
-      //         },
-      //         changeHost: true,
-      //       })
-      //     }
-      //   },
-      // devServer: {
-      //   before(app){
-      //     apiMocker(app, path.resolve('../mocker/index.js'), {
-      //       proxy: {
-      //         '/common/*': 'http://localhost:3001/',
-      //       },
-      //       changeHost: true,
-      //     })
-      //   }
-      // },
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry: [
@@ -671,5 +651,6 @@ module.exports = function(webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: false,
+    // proxy: './proxy.js', // FIXME
   };
 };

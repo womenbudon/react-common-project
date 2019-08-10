@@ -1,17 +1,18 @@
-/**
- * 代理配置
- *  配置代理远程api
- *  配置mock数据调整
- */
-export default proxyConfig = {
-    devServer: {
-        proxy: {
-          '/api': {
-            target: 'http://www.baidu.com/',
-            pathRewrite: {'^/api' : ''},
-            changeOrigin: true,     // target是域名的话，需要这个参数，
-            secure: false,          // 设置支持https协议的代理
-          },
-        }
-      }
-}
+const path = require('path');
+
+const SRC_PATH = path.join(__dirname, 'src');
+const cookie =
+  'connect.sid=s%3AQWopV1Jlp3IH_Ctj-eCM_BfA_Raj5i2k.vBnyG2wD2XlsRbdwkjXnfnJLcXp%2FKLxOn2oxoz7TUHM';
+
+module.exports = {
+  proxy: [
+    // {
+    //   context: ['/iotapp', '/oasisapp/ace'],
+    //   target: 'https://oasisrdapp.h3c.com',
+    //   secure: false,
+    //   onProxyReq: function(proxyReq, req, rsp) {
+    //     proxyReq.setHeader('cookie', cookie);
+    //   }
+    // }
+  ],
+};

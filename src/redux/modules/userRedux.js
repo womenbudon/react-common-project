@@ -1,9 +1,9 @@
 /**
  * @flow
  */
-import { ansyHandleFactory, handleActions } from 'utils/actionFactory'
-import { createAsyncAction } from 'utils/request'
-import { url } from './url'
+import { ansyHandleFactory, handleActions } from 'utils/actionFactory';
+import { createAsyncAction } from 'utils/request';
+import { url } from './url';
 
 const fetchUserListData = ansyHandleFactory('fetchUserList');
 const addUserData = ansyHandleFactory('addUser');
@@ -39,7 +39,7 @@ type fetchUserListParams = {
 };
 
 export const fetchUserList: (obj: fetchUserListParams) => disPromise<*> = createAsyncAction(
-  `${url}/user`,
+  `${url}/repos/hello`,
   fetchUserListData('GET'),
 );
 
