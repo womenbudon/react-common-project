@@ -19,5 +19,8 @@ module.exports = {
     "primary-color": "#3bc1c4",
     "border-radius-base": "4px",
     "font-size-base": "14px"
+  },
+  webConfig: {
+    "title": "xxx后台管理",
   }
 };

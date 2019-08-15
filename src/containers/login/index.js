@@ -60,12 +60,12 @@ class LoginPalatform extends Component<Props, State> {
     return (
       <div className="container">
         <div className="head">
-          <div className="logo">新农通平台管理</div>
+          <div className="logo">xxx平台管理</div>
         </div>
         <div className="body">
           <div className="login-wraper">
             <div className="login-header">
-              <div>新农通 logo</div>
+              <div>xxx logo</div>
             </div>
             <div className="login-content" >
               <LoginForm logOn={this.logOn} onChangeUserName={this.onChangeUserName} onChangePassWord={this.onChangePassWord} />
