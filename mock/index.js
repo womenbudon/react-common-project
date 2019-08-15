@@ -9,5 +9,11 @@ module.exports = {
         },
       });
     },
+    'POST /login': function(req, res) {
+      res.json({
+        code: 0,
+        mesage: 'success',
+      });
+    },
   };
   

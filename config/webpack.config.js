@@ -26,8 +26,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const postcssNormalize = require('postcss-normalize');
-const apiMocker = require('mocker-api');
-
+const config = require('./config');
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -47,7 +46,6 @@ const lessModuleRegex = /\.module\.less$/;
 
 const ROOT_PATH = path.resolve(__dirname);
 const SRC_PATH = path.join(ROOT_PATH, '../src');
-
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -112,12 +110,19 @@ module.exports = function(webpackEnv) {
       },
     ].filter(Boolean);
     if (preProcessor) {
-      loaders.push({
-        loader: require.resolve(preProcessor),
-        options: {
-          sourceMap: isEnvProduction && shouldUseSourceMap,
-        },
-      });
+      // 添加兼容antd 主题定制代码
+      let loader = require.resolve(preProcessor);
+      if (preProcessor === "less-loader") {
+        loader = {
+          loader,
+          options: {
+            modifyVars: config.antdTheme,
+            javascriptEnabled: true,
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          }
+        }
+      }
+      loaders.push(loader);
     }
     return loaders;
   };
@@ -319,7 +324,6 @@ module.exports = function(webpackEnv) {
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
-                
               },
               loader: require.resolve('eslint-loader'),
             },
@@ -466,7 +470,9 @@ module.exports = function(webpackEnv) {
             {
               test: lessRegex,
               exclude: lessModuleRegex,
-              use: getStyleLoaders({ importLoaders: 2 }, 'less-loader'),
+              use: getStyleLoaders({ 
+                        importLoaders: 2, 
+                  }, 'less-loader'),
              },
              {
                test: lessModuleRegex,
@@ -474,7 +480,7 @@ module.exports = function(webpackEnv) {
                   {
                     importLoaders: 2,
                     modules: true,
-                      getLocalIdent: getCSSModuleLocalIdent,
+                    getLocalIdent: getCSSModuleLocalIdent,
                   },
                   'less-loader'
                 ),
@@ -651,6 +657,6 @@ module.exports = function(webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: false,
-    // proxy: './proxy.js', // FIXME
+    // proxy: './config.js', // FIXME
   };
 };
