@@ -8,7 +8,7 @@ module.exports = {
   proxy: [
     // {
     //   context: ['/iotapp', '/oasisapp/ace'],
-    //   target: 'https://oasisrdapp.h3c.com',
+    //   target: 'https://xxxx',
     //   secure: false,
     //   onProxyReq: function(proxyReq, req, rsp) {
     //     proxyReq.setHeader('cookie', cookie);
@@ -21,6 +21,6 @@ module.exports = {
     "font-size-base": "14px"
   },
   webConfig: {
-    "title": "xxx后台管理",
+    "title": "慕思城后台管理",
   }
 };

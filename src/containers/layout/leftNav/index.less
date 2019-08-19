@@ -1,0 +1,16 @@
+:global(.left-nav) {
+    .title {
+        display: inline-block;
+        font-size: 13px;
+        padding-left: 12px;
+        transition: transform 300ms;
+        transform-origin: left;
+        transform: scale(1);
+    }
+}
+
+:global(.ant-menu-inline-collapsed) {
+    .title {
+        transform: scale(0);
+    }
+}

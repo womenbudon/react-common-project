@@ -1,8 +1,24 @@
 {
     "presets": [
         "react-app"
-      ],
+    ],
     "plugins": [
-      ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }] // `style: true` 会加载 less 文件
+        ["import", {
+            "libraryName": "antd",
+            "libraryDirectory": "es",
+            "style": true
+        }],
+        [
+            "react-css-modules",
+            {
+                "generateScopedName": "[local]-[hash:base64:5]",
+                "webpackHotModuleReloading": true,
+                "filetypes": {
+                    ".less": {
+                        "syntax": "postcss-less"
+                    }
+                }
+            }
+        ]
     ]
-  }
+}
