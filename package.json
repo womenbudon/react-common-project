@@ -132,7 +132,7 @@
         "postcss-flexbugs-fixes": "4.1.0",
         "postcss-normalize": "7.0.1",
         "globby": "6.x",
-        "express": "^4.17.1",
+        "express": "^4.17.3",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
         "mockjs": "^1.0.1-beta3",
